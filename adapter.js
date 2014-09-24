@@ -4,7 +4,7 @@ var should;
 
   var env = new nunjucks.Environment(new nunjucks.WebLoader('/views'));
 
-  window.getNunjucksTemplate = function (path) {
+  window.nunjucks.getPreprocessedTemplate = function (path) {
 
     if (window.__html__[path]) {
       return nunjucks.compile(window.__html__[path], env);
@@ -13,7 +13,7 @@ var should;
     }
   };
 
-  window.mockNunjucksFilter = function (name, fn) {
+  window.nunjucks.mockFilter = function (name, fn) {
     env.addFilter(name, fn || function () { return '' });
   };
 

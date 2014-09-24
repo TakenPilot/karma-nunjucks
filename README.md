@@ -1,15 +1,36 @@
 karma-nunjucks
 ===========
 
-Nunjucks for karma
+Nunjucks for Karma
 
-**Example**
+Uses html2js preprocessor ("karma-html2js-preprocessor") or an ordinary template string to compile nunjucks templates
+using any version of nunjucks.
+
+
+**Basic Example
 ```javascript
 describe("nunjucks example test", function () {
-    it("some test", function() {
-        var template = window.getNunjucksTemplate('index.html');
-        console.log('template', template);
-    });
+    var template;
+
+    before(function () {
+        template = nunjucks.compile('<div class=".thing"> {{ thing }} </div>');
+    })
+
+    it('Thing has class', function () {
+        var $el = $(template.render({thing: "something"}));
+        expect($el.is('.thing')).to.be.true;
+    });;
+});
+```
+
+**Easier Example**
+```javascript
+describe("nunjucks example test", function () {
+    var template;
+
+    before(function () {
+        template = nunjucks.getPreprocessedTemplate('index.html');
+    })
 
     it('Thing has class', function () {
         var $el = $(template.render({}));

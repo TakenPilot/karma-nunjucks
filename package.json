@@ -1,6 +1,6 @@
 {
   "name": "karma-nunjucks",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Nunjucks for Karma",
   "main": "index.js",
   "keywords": ["karma-plugin", "karma-framework", "nunjucks"],
