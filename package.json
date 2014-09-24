@@ -1,6 +1,6 @@
 {
   "name": "karma-nunjucks",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Nunjucks for Karma",
   "main": "index.js",
   "keywords": ["karma-plugin", "karma-framework", "nunjucks"],
@@ -9,6 +9,7 @@
   },
   "author": "Dane Stuckel",
   "license": "ISC",
+  "repository": "https://github.com/TakenPilot/karma-nunjucks",
   "peerDependencies": {
     "karma": ">=0.12.8",
     "nunjucks": "^1.0.7"
