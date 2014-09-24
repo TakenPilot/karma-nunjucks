@@ -1,15 +1,17 @@
 var path = require('path');
 
-var createPattern = function(file) {
-  return {pattern: file, included: true, served: true, watched: false};
+var createPattern = function(path) {
+  return {pattern: path, included: true, served: true, watched: false};
 };
 
-var initSinon = function(files) {
-  files.unshift(createPattern(path.dirname(require.resolve('nunjucks')) + '/nunjucks.js'));
+var framework = function(files) {
+  var nunjucksPath = path.dirname(require.resolve('nunjucks')) + '/browser/nunjucks.js';
+  files.unshift(createPattern(path.join(__dirname, 'adapter.js')));
+  files.unshift(createPattern(nunjucksPath));
 };
 
-initSinon.$inject = ['config.files'];
+framework.$inject = ['config.files'];
 
 module.exports = {
-  'framework:nunjucks': ['factory', initSinon]
+  'framework:nunjucks': ['factory', framework]
 };
