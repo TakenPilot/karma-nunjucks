@@ -6,6 +6,7 @@ Nunjucks for Karma
 Uses html2js preprocessor ("karma-html2js-preprocessor") or an ordinary template string to compile nunjucks templates
 using any version of nunjucks.
 
+[![Code Climate](https://codeclimate.com/github/TakenPilot/karma-nunjucks/badges/gpa.svg)](https://codeclimate.com/github/TakenPilot/karma-nunjucks)
 
 **Basic Example
 ```javascript
