@@ -3,15 +3,34 @@
   "version": "0.1.0",
   "description": "Nunjucks for Karma",
   "main": "index.js",
-  "keywords": ["karma-plugin", "karma-framework", "nunjucks"],
+  "keywords": [
+    "karma-plugin",
+    "karma-framework",
+    "nunjucks"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha -r blanket -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "adapter.js",
+      "data-cover-never": "node_modules"
+    }
   },
   "author": "Dane Stuckel",
   "license": "ISC",
   "repository": "https://github.com/TakenPilot/karma-nunjucks",
   "peerDependencies": {
     "karma": ">=0.12.8",
+    "nunjucks": "^1.0.7"
+  },
+  "devDependencies": {
+    "blanket": "^1.1.6",
+    "chai": "^1.9.1",
+    "coveralls": "^2.11.2",
+    "jsdom": "^1.0.0-pre.7",
+    "mocha": "^1.21.4",
+    "mocha-lcov-reporter": "0.0.1",
     "nunjucks": "^1.0.7"
   }
 }

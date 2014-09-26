@@ -1,8 +1,6 @@
-var should;
-
 (function(window) {
 
-  var env = new nunjucks.Environment(new nunjucks.WebLoader('/views'));
+  var env = new nunjucks.Environment();
 
   window.nunjucks.getPreprocessedTemplate = function (path) {
 
