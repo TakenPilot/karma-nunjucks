@@ -6,7 +6,14 @@ Nunjucks for Karma
 Uses html2js preprocessor ("karma-html2js-preprocessor") or an ordinary template string to compile nunjucks templates
 using any version of nunjucks.
 
+[![Build Status](https://travis-ci.org/TakenPilot/karma-nunjucks.svg?branch=master)](https://travis-ci.org/TakenPilot/karma-nunjucks)
+
 [![Code Climate](https://codeclimate.com/github/TakenPilot/karma-nunjucks/badges/gpa.svg)](https://codeclimate.com/github/TakenPilot/karma-nunjucks)
+
+[![Coverage Status](https://coveralls.io/repos/TakenPilot/karma-nunjucks/badge.png?branch=master)](https://coveralls.io/r/TakenPilot/karma-nunjucks?branch=master)
+
+[![Dependencies](https://david-dm.org/TakenPilot/karma-nunjucks.svg?style=flat)](https://david-dm.org/TakenPilot/karma-nunjucks.svg?style=flat)
+
 
 **Basic Example
 ```javascript
