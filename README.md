@@ -83,7 +83,9 @@ describe("nunjucks example test", function () {
 
     before(function () {
         env = new nunjucks.Environment();
-        template = env.getPreprocessedTemplate('index.html'); //this has a filter called test
+        
+        //this has a filter called test
+        template = env.getPreprocessedTemplate('index.html'); 
     })
 
     it('Thing has widget class', function () {
