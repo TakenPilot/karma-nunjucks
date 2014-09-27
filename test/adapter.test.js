@@ -5,7 +5,7 @@ function getWindow(cb) {
     ["http://code.jquery.com/jquery.js"],
     function (errors, window) {
       global.window = window;
-      window.nunjucks = require('nunjucks');
+      window.nunjucks = nunjucks;
       cb(errors, window);
     }
   );
@@ -15,34 +15,43 @@ var expect = require('chai').expect;
 global.nunjucks = require('nunjucks');
 
 describe('Nunjucks for Karma Adapter', function () {
-  var adapter;
+  var adapter, env;
 
   before(function (done) {
     getWindow(function (err, window) {
       if (window) {
         adapter = require('../adapter.js');
+        env = new nunjucks.Environment();
+        done();
       }
-
-      done();
     });
   });
 
   it('should throw exception for template that does not exist', function () {
     window.__html__ = {};
-    expect(function() { nunjucks.getPreprocessedTemplate('test') }).to.throw(Error);
+    expect(function() { env.getPreprocessedTemplate('test') }).to.throw(Error);
   });
 
   it('should get preprocessed template that exists', function () {
     window.__html__ = {
       'test': 'some test'
     };
-    expect(nunjucks.getPreprocessedTemplate('test')).to.equal('');
+    var template = env.getPreprocessedTemplate('test');
+    expect(template.render()).to.equal('some test');
+  });
+
+  it('should get preprocessed template that exists', function () {
+    window.__html__ = {
+      'test': '  {{ content }}  '
+    };
+    var template = env.getPreprocessedTemplate('test');
+    expect(template.render({content: "some content"})).to.equal('  some content  ');
   });
 
   it('should create mock filter', function () {
     var mockFilter = function () {};
-    nunjucks.mockFilter('test', mockFilter);
-    expect(nunjucks.getFilter('test')).to.equal(mockFilter);
+    env.mockFilter('test', mockFilter);
+    expect(env.getFilter('test')).to.equal(mockFilter);
   })
 });
 

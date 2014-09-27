@@ -1,18 +1,15 @@
 (function(window) {
 
-  var env = new nunjucks.Environment();
-
-  window.nunjucks.getPreprocessedTemplate = function (path) {
-
+  window.nunjucks.Environment.prototype.getPreprocessedTemplate = function (path) {
     if (window.__html__[path]) {
-      return nunjucks.compile(window.__html__[path], env);
+      return nunjucks.compile(window.__html__[path], this);
     } else {
       throw new Error('nunjucks template does not exist');
     }
   };
 
-  window.nunjucks.mockFilter = function (name, fn) {
-    env.addFilter(name, fn || function () { return '' });
+  window.nunjucks.Environment.prototype.mockFilter = function (name, fn) {
+    this.addFilter(name, fn || function () { return '' });
   };
 
 })(window);

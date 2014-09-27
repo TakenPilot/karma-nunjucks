@@ -15,8 +15,12 @@ using any version of nunjucks.
 [![Dependencies](https://david-dm.org/TakenPilot/karma-nunjucks.svg?style=flat)](https://david-dm.org/TakenPilot/karma-nunjucks.svg?style=flat)
 
 
-**Basic Example
+##Basic Example
+
+Nunjucks is now available to your tests.
+
 ```javascript
+
 describe("nunjucks example test", function () {
     var template;
 
@@ -29,15 +33,22 @@ describe("nunjucks example test", function () {
         expect($el.is('.thing')).to.be.true;
     });;
 });
+
 ```
 
-**Easier Example**
+##Example with templates
+
+A new convenience method is available in nunjucks environments to make templates available 
+called `getPreprocessedTemplate`.
+
 ```javascript
+
 describe("nunjucks example test", function () {
-    var template;
+    var template, env;
 
     before(function () {
-        template = nunjucks.getPreprocessedTemplate('index.html');
+        env = new nunjucks.Environment();
+        template = env.getPreprocessedTemplate('index.html');
     })
 
     it('Thing has class', function () {
@@ -58,4 +69,28 @@ describe("nunjucks example test", function () {
         expect($el.find('.widget').find('li[data-filter]').length).to.equal(1);
     });
 });
+
+```
+
+##Example with mocked filters
+
+Sometimes it's useful to mock filters that access the disk or other resources.  Use `mockFilter`.
+
+```javascript
+
+describe("nunjucks example test", function () {
+    var template, env;
+
+    before(function () {
+        env = new nunjucks.Environment();
+        template = env.getPreprocessedTemplate('index.html'); //this has a filter called test
+    })
+
+    it('Thing has widget class', function () {
+        var noop = function () { return 'test string' };
+        env.mockFilter('test', noop); //mock the filter
+        expect(template.render()).to.contain('test string');
+    });
+});
+
 ```
