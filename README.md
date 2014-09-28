@@ -14,6 +14,8 @@ using any version of nunjucks.
 
 [![Dependencies](https://david-dm.org/TakenPilot/karma-nunjucks.svg?style=flat)](https://david-dm.org/TakenPilot/karma-nunjucks.svg?style=flat)
 
+[![NPM version](https://badge.fury.io/js/general-markov.svg)](http://badge.fury.io/js/karma-nunjucks)
+
 
 ##Basic Example
 
