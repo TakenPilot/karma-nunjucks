@@ -30,12 +30,10 @@ describe("nunjucks example test", function () {
         template = nunjucks.compile('<div class="{{ thing }}"></div>');
     })
 
-    it('Thing has class', function (done) {
-        template.render({thing: "something"}, function (err, result) {
-            document.body.innerHTML += result;
-            expect(document.querySelector('.something')).to.exist;
-            done();
-        });
+    it('Thing has class', function () {
+        var result = template.render({thing: "something"});
+        document.body.innerHTML += result;
+        expect(document.querySelector('.something')).to.exist;
     });;    
 });
 
@@ -56,12 +54,10 @@ describe("nunjucks example test", function () {
         template = env.getPreprocessedTemplate('index.html');
     })
 
-    it('Thing has class', function (done) {
-        template.render({thing: "something"}, function (err, result) {
-            document.body.innerHTML += result;
-            expect(document.querySelector('.something')).to.exist;
-            done();
-        });
+    it('Thing has class', function () {
+        var result = template.render({thing: "something"});
+        document.body.innerHTML += result;
+        expect(document.querySelector('.something')).to.exist;
     });
 
     it('Thing has widget class', function () {
