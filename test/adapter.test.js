@@ -27,6 +27,11 @@ describe('Nunjucks for Karma Adapter', function () {
     });
   });
 
+  it('should throw exception when preprocessor has not been run', function () {
+    window.__html__ = void 0;
+    expect(function() { env.getPreprocessedTemplate('test') }).to.throw(Error);
+  });
+
   it('should throw exception for template that does not exist', function () {
     window.__html__ = {};
     expect(function() { env.getPreprocessedTemplate('test') }).to.throw(Error);

@@ -27,13 +27,14 @@ describe("nunjucks example test", function () {
     var template;
 
     before(function () {
-        template = nunjucks.compile('<div class=".thing"> {{ thing }} </div>');
+        template = nunjucks.compile('<div class="{{ thing }}"></div>');
     })
 
     it('Thing has class', function () {
-        var $el = $(template.render({thing: "something"}));
-        expect($el.is('.thing')).to.be.true;
-    });;
+        var result = template.render({thing: "something"});
+        document.body.innerHTML += result;
+        expect(document.querySelector('.something')).to.exist;
+    });;    
 });
 
 ```
@@ -54,9 +55,9 @@ describe("nunjucks example test", function () {
     })
 
     it('Thing has class', function () {
-        var $el = $(template.render({}));
-        var thing = new Thing($el);
-        expect($el.is('.thing')).to.be.true;
+        var result = template.render({thing: "something"});
+        document.body.innerHTML += result;
+        expect(document.querySelector('.something')).to.exist;
     });
 
     it('Thing has widget class', function () {

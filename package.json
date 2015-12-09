@@ -22,7 +22,7 @@
   "repository": "https://github.com/TakenPilot/karma-nunjucks",
   "peerDependencies": {
     "karma": ">=0.12.8",
-    "nunjucks": "^1.0.7"
+    "nunjucks": "^2.0.0"
   },
   "devDependencies": {
     "blanket": "^1.1.6",
@@ -31,6 +31,6 @@
     "jsdom": "^1.0.0-pre.7",
     "mocha": "^1.21.4",
     "mocha-lcov-reporter": "0.0.1",
-    "nunjucks": "^1.0.7"
+    "nunjucks": "^2.0.0"
   }
 }
