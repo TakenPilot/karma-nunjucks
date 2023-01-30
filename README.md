@@ -3,6 +3,9 @@ karma-nunjucks
 
 Nunjucks for Karma
 
+> **⚠ Warning**
+> This library is deprecated. The underlying libraries that this package relies on are either unmaintained or have security warnings. I'm deprecating this project until someone rewrites it with modern tooling.
+
 Uses html2js preprocessor ("karma-html2js-preprocessor") or an ordinary template string to compile nunjucks templates
 using any version of nunjucks.
 
